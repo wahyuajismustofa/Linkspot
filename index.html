@@ -4,10 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Linkspot</title>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #0077cc, #00c6ff);
+      background: linear-gradient(135deg, #0077cc, #00c6ff);
       margin: 0;
       padding: 0;
       display: flex;
@@ -18,7 +20,34 @@
       overflow-x: hidden;
       width: 100%;
     }
+	.main {
+    width: 100%;
+	}
+	.imp-hidden{
+	display: none !important;
+	}
+    #loading-screen {
+      position: fixed;
+      z-index: 9999;
+      background: white;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
 
+    .spinner {
+      border: 6px solid #ccc;
+      border-top: 6px solid #0077cc;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
     .container {
       width: 100%;
       max-width: 500px;
@@ -60,7 +89,7 @@
 		padding: 1rem;
 		background: #fff;
 		color: #0077cc;
-		border-radius: 30px;
+		border-radius: 20px;
 		font-weight: bold;
 		transition: all 0.2s ease-in-out;
 		overflow: hidden;
@@ -75,42 +104,56 @@
       padding: 1rem;
       font-size: 0.8rem;
       color: rgba(255, 255, 255, 0.7);
+      text-align: center;
     }
+	
   </style>
 </head>
 <body>
+  <div id="loading-screen">
+    <div class="spinner"></div>
+  </div>
+<div class="main imp-hidden">
   <div class="container">
-    <img src="src/profil/aku.jpg" alt="Foto Profil" class="avatar" />
-    <h1>Wahyu Ajis Mustofa</h1>
-    <p>Cetak | Desain | Digital | Kreatif</p>
+    <img src="src/profil/aku.jpg" alt="Foto Profil" class="avatar" data-aos="zoom-in" data-aos-duration="600"/>
+    <h1 data-aos="zoom-in" data-aos-duration="600">Wahyu Ajis Mustofa</h1>
+    <p data-aos="zoom-in" data-aos-duration="600">Cetak | Desain | Digital | Kreatif</p>
 	
 	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
 	<img src="src/icon/website.svg" class="icon-link" />
-	<p class="link">www.karyaion.my.id</p>
+	<p class="link">Website</p>
 	</div>
     <div class="container-link" onclick="window.open('https://wa.me/6285161517176', '_blank')">
 	<img src="src/icon/whatsapp.svg" class="icon-link" />
 	<p class="link">WhatsApp</p>
 	</div>
+    <div class="container-link" onclick="window.open('mailto:wahyuajismustofa333@gmail.com', '_blank')">
+	<img src="src/icon/gmail.svg" class="icon-link" />
+	<p class="link">Gmail</p>
+	</div>
     <div class="container-link" onclick="window.open('https://instagram.com/mustofa.wahyuajis', '_blank')">
 	<img src="src/icon/instagram.svg" class="icon-link" />
-	<p class="link">@mustofa.wahyuajis</p>
+	<p class="link">Instagram</p>
 	</div>
 	<div class="container-link" onclick="window.open('https://www.linkedin.com/in/wahyuajismustofa/', '_blank')">
 	<img src="src/icon/linkedin.svg" class="icon-link" />
-	<p class="link">wahyuajismustofa</p>
+	<p class="link">Linkedin</p>
 	</div>
 	<div class="container-link" onclick="window.open('https://trakteer.id/wahyuajismustofa/tip', '_blank')">
 	<img src="src/icon/Trakteer.svg" class="icon-link" />
 	<p class="link">Trakteer</p>
-	</div>	
+	</div>
     <div class="container-link" onclick="window.open('https://tiktok.com/@wahyuajismustofa', '_blank')">
 	<img src="src/icon/tiktok.svg" class="icon-link" />
 	<p class="link">TikTok</p>
 	</div>
     <div class="container-link" onclick="window.open('https://drive.google.com/yourportfolio', '_blank')">
+	<img src="src/icon/cv.svg" class="icon-link" />
+	<p class="link">CV/Portofolio</p>
+	</div>
+    <div class="container-link" onclick="window.open('https://drive.google.com/yourportfolio', '_blank')">
 	<img src="src/icon/google-drive.svg" class="icon-link" />
-	<p class="link">Portofolio</p>
+	<p class="link">Google Drive</p>
 	</div>
 	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
 	<img src="src/icon/behance.svg" class="icon-link" />
@@ -123,10 +166,6 @@
 	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
 	<img src="src/icon/google-drive.svg" class="icon-link" />
 	<p class="link">Google drive</p>
-	</div>
-	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
-	<img src="src/icon/instagram.svg" class="icon-link" />
-	<p class="link">Instagram</p>
 	</div>
 	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
 	<img src="src/icon/saweria.svg" class="icon-link" />
@@ -160,6 +199,39 @@
     
   </div>
 
-  <footer>&copy; 2025 Wahyu Ajis Mustofa. All rights reserved.</footer>
+  <footer>&copy; 2025 Wahyu Ajis Mustofa. Hak cipta dilindungi undang-undang.</footer>
+</div>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    window.addEventListener('load', () => {
+      document.getElementById('loading-screen').classList.add('imp-hidden');
+      document.querySelector('.main').classList.remove('imp-hidden');
+
+      AOS.init({
+        once: false,
+        duration: 600,
+      });
+
+      const batchDelay = 100;
+      const observer = new IntersectionObserver((entries) => {
+        const appearing = entries
+          .filter(entry => entry.isIntersecting && !entry.target.dataset.aosSet)
+          .sort((a, b) => a.target.offsetTop - b.target.offsetTop);
+
+        appearing.forEach((entry, index) => {
+          const el = entry.target;
+          el.setAttribute('data-aos', 'fade-up');
+          el.setAttribute('data-aos-delay', index * batchDelay);
+          el.setAttribute('data-aos-duration', '600');
+          el.setAttribute('data-aos-once', 'false');
+          el.dataset.aosSet = "true";
+        });
+
+        if (appearing.length > 0) AOS.refreshHard();
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.container-link').forEach(el => observer.observe(el));
+    });
+  </script>
 </body>
 </html>
