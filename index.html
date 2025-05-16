@@ -106,7 +106,82 @@
       color: rgba(255, 255, 255, 0.7);
       text-align: center;
     }
-	
+	.qr-overlay {
+	  position: fixed;
+	  top: 0; left: 0;
+	  width: 100%; height: 100%;
+	  background: rgba(0,0,0,0.5);
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  z-index: 9999;
+	  transition: opacity 0.4s ease;
+	}
+
+	.qr-popup {
+	  display: flex;
+	  background: #fff;
+	  padding: 2rem;
+	  border-radius: 20px;
+	  text-align: center;
+	  color: #000;
+	  position: relative;
+	  width: 300px;
+	  max-width: 90%;
+	  animation: fadeInUp 0.5s ease forwards;
+	  flex-direction: column;
+	  align-items: center;
+	}
+
+	.close-btn {
+	  position: absolute;
+	  top: 10px; right: 15px;
+	  font-size: 1.5rem;
+	  background: none;
+	  border: none;
+	  cursor: pointer;
+	  color: #333;
+	}
+
+	@keyframes fadeInUp {
+	  from {
+		opacity: 0;
+		transform: translateY(30px);
+	  }
+	  to {
+		opacity: 1;
+		transform: translateY(0);
+	  }
+	}
+
+	@keyframes fadeOutDown {
+	  from {
+		opacity: 1;
+		transform: translateY(0);
+	  }
+	  to {
+		opacity: 0;
+		transform: translateY(30px);
+	  }
+	}
+	.download-btn {
+	  margin-top: 1rem;
+	  background-color: #0077cc;
+	  border:1px solid white;
+	  color: white;
+	  border: none;
+	  padding: 0.5rem 1rem;
+	  border-radius: 8px;
+	  cursor: pointer;
+	  transition: background 0.3s ease;
+	}
+
+	.download-btn:hover {
+	  background-color: #ffffff;
+	  border:1px solid #0077cc;
+	  color:#0077cc;
+	}
+
   </style>
 </head>
 <body>
@@ -195,6 +270,21 @@
 	<img src="src/icon/youtube.svg" class="icon-link" />
 	<p class="link">Youtube</p>
 	</div>
+	<!-- Tombol QR -->
+	<div class="container-link" id="show-qr-btn">
+	  <img src="src/icon/qr.svg" class="icon-link" />
+	  <p class="link">QR Linkspot</p>
+	</div>
+
+	<!-- Overlay dan Slide QR -->
+	<div id="qr-overlay" class="qr-overlay imp-hidden">
+	  <div class="qr-popup" data-aos="fade-up">
+		<button id="close-qr" class="close-btn">×</button>
+		<h3>QR Linkspot</h3>
+		<div id="qrcode"></div>
+		<button id="download-qr" class="download-btn">Download QR</button>
+	  </div>
+	</div>
 
     
   </div>
@@ -202,36 +292,101 @@
   <footer>&copy; 2025 Wahyu Ajis Mustofa. Hak cipta dilindungi undang-undang.</footer>
 </div>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
   <script>
-    window.addEventListener('load', () => {
-      document.getElementById('loading-screen').classList.add('imp-hidden');
-      document.querySelector('.main').classList.remove('imp-hidden');
+window.addEventListener('load', () => {
+  document.getElementById('loading-screen').classList.add('imp-hidden');
+  document.querySelector('.main').classList.remove('imp-hidden');
 
-      AOS.init({
-        once: false,
-        duration: 600,
-      });
+  AOS.init({
+    once: false,
+    duration: 600,
+  });
 
-      const batchDelay = 100;
-      const observer = new IntersectionObserver((entries) => {
-        const appearing = entries
-          .filter(entry => entry.isIntersecting && !entry.target.dataset.aosSet)
-          .sort((a, b) => a.target.offsetTop - b.target.offsetTop);
+  const batchDelay = 100;
+  const observer = new IntersectionObserver((entries) => {
+    const appearing = entries
+      .filter(entry => entry.isIntersecting && !entry.target.dataset.aosSet)
+      .sort((a, b) => a.target.offsetTop - b.target.offsetTop);
 
-        appearing.forEach((entry, index) => {
-          const el = entry.target;
-          el.setAttribute('data-aos', 'fade-up');
-          el.setAttribute('data-aos-delay', index * batchDelay);
-          el.setAttribute('data-aos-duration', '600');
-          el.setAttribute('data-aos-once', 'false');
-          el.dataset.aosSet = "true";
-        });
-
-        if (appearing.length > 0) AOS.refreshHard();
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.container-link').forEach(el => observer.observe(el));
+    appearing.forEach((entry, index) => {
+      const el = entry.target;
+      el.setAttribute('data-aos', 'fade-up');
+      el.setAttribute('data-aos-delay', index * batchDelay);
+      el.setAttribute('data-aos-duration', '600');
+      el.setAttribute('data-aos-once', 'false');
+      el.dataset.aosSet = "true";
     });
-  </script>
+
+    if (appearing.length > 0) AOS.refreshHard();
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.container-link').forEach(el => observer.observe(el));
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const qrBtn = document.getElementById('show-qr-btn');
+  const qrOverlay = document.getElementById('qr-overlay');
+  const qrPopup = document.querySelector('.qr-popup');
+  const closeBtn = document.getElementById('close-qr');
+  const downloadBtn = document.getElementById('download-qr');
+
+  qrBtn.addEventListener('click', () => {
+    const url = window.location.href;
+    qrOverlay.classList.remove('imp-hidden');
+    const qrTarget = document.getElementById('qrcode');
+    qrTarget.innerHTML = '';
+
+    const qr = new QRCode(qrTarget, {
+      text: url,
+      width: 200,
+      height: 200,
+      correctLevel: QRCode.CorrectLevel.H
+    });
+
+    // Tunggu hingga QR selesai dirender lalu enable download
+    setTimeout(() => {
+      const qrCanvas = qrTarget.querySelector('canvas');
+      const qrImage = qrTarget.querySelector('img');
+
+      downloadBtn.onclick = () => {
+        let dataUrl = "";
+        if (qrCanvas) {
+          dataUrl = qrCanvas.toDataURL("image/png");
+        } else if (qrImage) {
+          dataUrl = qrImage.src;
+        }
+
+        if (!dataUrl.startsWith("data:image")) {
+          alert("QR belum tersedia. Coba lagi sebentar.");
+          return;
+        }
+
+        const link = document.createElement("a");
+        link.href = dataUrl;
+        link.download = "linkspot-qr.png";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      };
+    }, 300);
+  });
+
+  // Tutup popup QR
+  const closeQR = () => {
+    qrPopup.style.animation = 'fadeOutDown 0.5s ease forwards';
+    setTimeout(() => {
+      qrOverlay.classList.add('imp-hidden');
+      qrPopup.style.animation = 'fadeInUp 0.5s ease forwards';
+    }, 400);
+  };
+
+  closeBtn.addEventListener('click', closeQR);
+  qrOverlay.addEventListener('click', (e) => {
+    if (e.target === qrOverlay) closeQR();
+  });
+});
+</script>
+
 </body>
 </html>
