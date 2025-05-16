@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Linktree Kamu</title>
+  <title>Linkspot</title>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -38,23 +38,36 @@
     }
 
     .link {
-      display: block;
-      margin: 1rem 0;
-      padding: 1rem;
-      background: #fff;
-      color: #0077cc;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: all 0.2s ease-in-out;
+    padding: 0px;
+    margin: 0px;
     }
+	
+	img.icon-link {
+    height: 30px;
+    position: relative;
+    left: -10px;
+ }
 
-    .link:hover {
+	.container-link {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		align-items: center;
+		justify-content: center;
+		margin: 1rem;
+		padding: 1rem;
+		background: #fff;
+		color: #0077cc;
+		border-radius: 30px;
+		font-weight: bold;
+		transition: all 0.2s ease-in-out;
+		overflow: hidden;
+	}
+	.container-link:hover {
       background: #0077cc;
       color: #fff;
       transform: scale(1.03);
     }
-
     footer {
       margin-top: auto;
       padding: 1rem;
@@ -65,17 +78,86 @@
 </head>
 <body>
   <div class="container">
-    <img src="src/aku.jpg" alt="Foto Profil" class="avatar" />
-    <h1>Wahyu / Kryon</h1>
+    <img src="src/foto-profil/aku.jpg" alt="Foto Profil" class="avatar" />
+    <h1>Wahyu Ajis Mustofa</h1>
     <p>Cetak | Desain | Digital | Kreatif</p>
+	
+	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
+	<img src="src/icon/website.svg" class="icon-link" />
+	<p class="link">www.karyaion.my.id</p>
+	</div>
+    <div class="container-link" onclick="window.open('https://wa.me/6281234567890', '_blank')">
+	<img src="src/icon/whatsApp.svg" class="icon-link" />
+	<p class="link">WhatsApp</p>
+	</div>
+    <div class="container-link" onclick="window.open('https://instagram.com/mustofa.wahyuajis', '_blank')">
+	<img src="src/icon/instagram.svg" class="icon-link" />
+	<p class="link">@mustofa.wahyuajis</p>
+	</div>
+	<div class="container-link" onclick="window.open('https://www.linkedin.com/in/wahyuajismustofa/', '_blank')">
+	<img src="src/icon/linkedin.svg" class="icon-link" />
+	<p class="link">wahyuajismustofa</p>
+	</div>
+	<div class="container-link" onclick="window.open('https://trakteer.id/wahyuajismustofa/tip', '_blank')">
+	<img src="src/icon/Trakteer.svg" class="icon-link" />
+	<p class="link">Trakteer</p>
+	</div>	
+    <div class="container-link" onclick="window.open('https://tiktok.com/@wahyuajismustofa', '_blank')">
+	<img src="src/icon/tiktok.svg" class="icon-link" />
+	<p class="link">TikTok</p>
+	</div>
+    <div class="container-link" onclick="window.open('https://drive.google.com/yourportfolio', '_blank')">
+	<img src="src/icon/google-drive.svg" class="icon-link" />
+	<p class="link">Portofolio</p>
+	</div>
+	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
+	<img src="src/icon/behance.svg" class="icon-link" />
+	<p class="link">Behance</p>
+	</div>
+	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
+	<img src="src/icon/discord.svg" class="icon-link" />
+	<p class="link">Discord</p>
+	</div>
+	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
+	<img src="src/icon/google-drive.svg" class="icon-link" />
+	<p class="link">Google drive</p>
+	</div>
+	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
+	<img src="src/icon/instagram.svg" class="icon-link" />
+	<p class="link">Instagram</p>
+	</div>
+	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
+	<img src="src/icon/saweria.svg" class="icon-link" />
+	<p class="link">Saweria</p>
+	</div>
+	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
+	<img src="src/icon/shopee.svg" class="icon-link" />
+	<p class="link">Shopee</p>
+	</div>
+	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
+	<img src="src/icon/spotify.svg" class="icon-link" />
+	<p class="link">Spotify</p>
+	</div>
+	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
+	<img src="src/icon/tiktok.svg" class="icon-link" />
+	<p class="link">Tiktok</p>
+	</div>
+	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
+	<img src="src/icon/tokopedia.svg" class="icon-link" />
+	<p class="link">Tokopedia</p>
+	</div>
+	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
+	<img src="src/icon/x.svg" class="icon-link" />
+	<p class="link">Twitter (X)</p>
+	</div>
+	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
+	<img src="src/icon/youtube.svg" class="icon-link" />
+	<p class="link">Youtube</p>
+	</div>
 
-    <a class="link" href="https://kryon.vercel.app" target="_blank">🌐 Website Kryon</a>
-    <a class="link" href="https://wa.me/6281234567890" target="_blank">💬 WhatsApp Langsung</a>
-    <a class="link" href="https://instagram.com/kryon_id" target="_blank">📸 Instagram</a>
-    <a class="link" href="https://tiktok.com/@kryon_id" target="_blank">🎥 TikTok</a>
-    <a class="link" href="https://drive.google.com/yourportfolio" target="_blank">📁 Lihat Portofolio</a>
+    
   </div>
 
-  <footer>&copy; 2025 Wahyu / Kryon. All rights reserved.</footer>
+  <footer>&copy; 2025 Wahyu Ajis Mustofa. All rights reserved.</footer>
 </body>
 </html>
