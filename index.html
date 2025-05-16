@@ -22,7 +22,11 @@
     }
 	.main {
     width: 100%;
-	}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+ }
 	.imp-hidden{
 	display: none !important;
 	}
@@ -270,13 +274,12 @@
 	<img src="src/icon/youtube.svg" class="icon-link" />
 	<p class="link">Youtube</p>
 	</div>
-	<!-- Tombol QR -->
 	<div class="container-link" id="show-qr-btn">
 	  <img src="src/icon/qr.svg" class="icon-link" />
 	  <p class="link">QR Linkspot</p>
 	</div>
-
-	<!-- Overlay dan Slide QR -->
+	
+	
 	<div id="qr-overlay" class="qr-overlay imp-hidden">
 	  <div class="qr-popup" data-aos="fade-up">
 		<button id="close-qr" class="close-btn">×</button>
@@ -303,7 +306,7 @@ window.addEventListener('load', () => {
     duration: 600,
   });
 
-  const batchDelay = 100;
+  const batchDelay = 50;
   const observer = new IntersectionObserver((entries) => {
     const appearing = entries
       .filter(entry => entry.isIntersecting && !entry.target.dataset.aosSet)
