@@ -5,10 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Linkspot</title>
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Inter','Montserrat', sans-serif;
       background: linear-gradient(135deg, #0077cc, #00c6ff);
       margin: 0;
       padding: 0;
@@ -52,10 +54,10 @@
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
-    .container {
+    .container-linkspot {
       width: 100%;
       max-width: 500px;
-      padding: 2rem 0;
+      padding: 0;
       text-align: center;
     }
 
@@ -63,24 +65,26 @@
       width: 120px;
       height: 120px;
       border-radius: 50%;
-      margin: 1rem auto;
-      border: 4px solid #fff;
+      margin-top: 1rem;
+      border: 3px solid #fff5;
     }
-
+	.display-name{}
+	.bio{
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
     h1 {
-      margin-top: 0.5rem;
       font-size: 1.8rem;
+      margin: 0;
     }
-
     .link {
     padding: 0px;
     margin: 0px;
+    width: 80%;
     }
 	
 	img.icon-link {
-    height: 30px;
-    position: relative;
-    left: -10px;
+    width: 30px;
  }
 
 	.container-link {
@@ -90,19 +94,33 @@
 		align-items: center;
 		justify-content: center;
 		margin: 1rem;
-		padding: 1rem;
 		background: #fff;
 		color: #0077cc;
-		border-radius: 20px;
+		border-radius: 30px;
 		font-weight: bold;
 		transition: all 0.2s ease-in-out;
 		overflow: hidden;
+		height: 50px;
+		font-size: 18px;
 	}
 	.container-link:hover {
       background: #0077cc;
       color: #fff;
       transform: scale(1.03);
     }
+	.container-icon{
+    position: absolute;
+    left: 25px;
+    transform: translateX(-50%);
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 2px solid #0077cc99;
+}
     footer {
       margin-top: auto;
       padding: 1rem;
@@ -193,89 +211,89 @@
     <div class="spinner"></div>
   </div>
 <div class="main imp-hidden">
-  <div class="container">
+  <div class="container-linkspot">
     <img src="src/profil/aku.jpg" alt="Foto Profil" class="avatar" data-aos="zoom-in" data-aos-duration="600"/>
-    <h1 data-aos="zoom-in" data-aos-duration="600">Wahyu Ajis Mustofa</h1>
-    <p data-aos="zoom-in" data-aos-duration="600">Cetak | Desain | Digital | Kreatif</p>
+    <h1 class="display-name" data-aos="zoom-in" data-aos-duration="600">Wahyu Ajis Mustofa</h1>
+    <p class="bio" data-aos="zoom-in" data-aos-duration="600">Cetak | Desain | Digital | Kreatif</p>
 	
 	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
-	<img src="src/icon/website.svg" class="icon-link" />
+	<div class="container-icon"><img src="src/icon/website.svg" class="icon-link" /></div>
 	<p class="link">Website</p>
 	</div>
     <div class="container-link" onclick="window.open('https://wa.me/6285161517176', '_blank')">
-	<img src="src/icon/whatsapp.svg" class="icon-link" />
+	<div class="container-icon"><img src="src/icon/whatsapp.svg" class="icon-link" /></div>
 	<p class="link">WhatsApp</p>
 	</div>
-    <div class="container-link" onclick="window.open('mailto:wahyuajismustofa333@gmail.com', '_blank')">
-	<img src="src/icon/gmail.svg" class="icon-link" />
-	<p class="link">Gmail</p>
+    <div class="container-link" onclick="window.open(https://www.facebook.com/mustofa.wahyuajis', '_blank')">
+	<div class="container-icon"><img src="src/icon/facebook.svg" class="icon-link" /></div>
+	<p class="link">Facebook</p>
 	</div>
     <div class="container-link" onclick="window.open('https://instagram.com/mustofa.wahyuajis', '_blank')">
-	<img src="src/icon/instagram.svg" class="icon-link" />
+	<div class="container-icon"><img src="src/icon/instagram.svg" class="icon-link" /></div>
 	<p class="link">Instagram</p>
 	</div>
+    <div class="container-link" onclick="window.open('mailto:wahyuajismustofa333@gmail.com', '_blank')">
+	<div class="container-icon"><img src="src/icon/gmail.svg" class="icon-link" /></div>
+	<p class="link">Gmail</p>
+	</div>	
 	<div class="container-link" onclick="window.open('https://www.linkedin.com/in/wahyuajismustofa/', '_blank')">
-	<img src="src/icon/linkedin.svg" class="icon-link" />
+	<div class="container-icon"><img src="src/icon/linkedin.svg" class="icon-link" /></div>
 	<p class="link">Linkedin</p>
 	</div>
 	<div class="container-link" onclick="window.open('https://trakteer.id/wahyuajismustofa/tip', '_blank')">
-	<img src="src/icon/Trakteer.svg" class="icon-link" />
+	<div class="container-icon"><img src="src/icon/Trakteer.svg" class="icon-link" /></div>
 	<p class="link">Trakteer</p>
 	</div>
     <div class="container-link" onclick="window.open('https://tiktok.com/@wahyuajismustofa', '_blank')">
-	<img src="src/icon/tiktok.svg" class="icon-link" />
+	<div class="container-icon"><img src="src/icon/tiktok.svg" class="icon-link" /></div>
 	<p class="link">TikTok</p>
 	</div>
     <div class="container-link" onclick="window.open('https://drive.google.com/yourportfolio', '_blank')">
-	<img src="src/icon/cv.svg" class="icon-link" />
+	<div class="container-icon"><img src="src/icon/cv.svg" class="icon-link" /></div>
 	<p class="link">CV/Portofolio</p>
 	</div>
     <div class="container-link" onclick="window.open('https://drive.google.com/yourportfolio', '_blank')">
-	<img src="src/icon/google-drive.svg" class="icon-link" />
+	<div class="container-icon"><img src="src/icon/google-drive.svg" class="icon-link" /></div>
 	<p class="link">Google Drive</p>
 	</div>
 	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
-	<img src="src/icon/behance.svg" class="icon-link" />
+	<div class="container-icon"><img src="src/icon/behance.svg" class="icon-link" /></div>
 	<p class="link">Behance</p>
 	</div>
 	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
-	<img src="src/icon/discord.svg" class="icon-link" />
+	<div class="container-icon"><img src="src/icon/discord.svg" class="icon-link" /></div>
 	<p class="link">Discord</p>
 	</div>
 	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
-	<img src="src/icon/google-drive.svg" class="icon-link" />
-	<p class="link">Google drive</p>
-	</div>
-	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
-	<img src="src/icon/saweria.svg" class="icon-link" />
+	<div class="container-icon"><img src="src/icon/saweria.svg" class="icon-link" /></div>
 	<p class="link">Saweria</p>
 	</div>
 	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
-	<img src="src/icon/shopee.svg" class="icon-link" />
+	<div class="container-icon"><img src="src/icon/shopee.svg" class="icon-link" /></div>
 	<p class="link">Shopee</p>
 	</div>
 	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
-	<img src="src/icon/spotify.svg" class="icon-link" />
+	<div class="container-icon"><img src="src/icon/spotify.svg" class="icon-link" /></div>
 	<p class="link">Spotify</p>
 	</div>
 	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
-	<img src="src/icon/tiktok.svg" class="icon-link" />
+	<div class="container-icon"><img src="src/icon/tiktok.svg" class="icon-link" /></div>
 	<p class="link">Tiktok</p>
 	</div>
 	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
-	<img src="src/icon/tokopedia.svg" class="icon-link" />
+	<div class="container-icon"><img src="src/icon/tokopedia.svg" class="icon-link" /></div>
 	<p class="link">Tokopedia</p>
 	</div>
 	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
-	<img src="src/icon/x.svg" class="icon-link" />
+	<div class="container-icon"><img src="src/icon/x.svg" class="icon-link" /></div>
 	<p class="link">Twitter (X)</p>
 	</div>
 	<div class="container-link" onclick="window.open('https://www.karyaion.my.id', '_blank')">
-	<img src="src/icon/youtube.svg" class="icon-link" />
+	<div class="container-icon"><img src="src/icon/youtube.svg" class="icon-link" /></div>
 	<p class="link">Youtube</p>
 	</div>
 	<div class="container-link" id="show-qr-btn">
-	  <img src="src/icon/qr.svg" class="icon-link" />
+	  <div class="container-icon"><img src="src/icon/qr.svg" class="icon-link" /></div>
 	  <p class="link">QR Linkspot</p>
 	</div>
 	
@@ -292,15 +310,12 @@
     
   </div>
 
-  <footer>&copy; 2025 Wahyu Ajis Mustofa. Hak cipta dilindungi undang-undang.</footer>
+  <footer>&copy; 2025 Linkspot oleh KRYON<br>Hak cipta dilindungi undang-undang.</footer>
 </div>
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
   <script>
 window.addEventListener('load', () => {
-  document.getElementById('loading-screen').classList.add('imp-hidden');
-  document.querySelector('.main').classList.remove('imp-hidden');
-
   AOS.init({
     once: false,
     duration: 600,
@@ -325,6 +340,9 @@ window.addEventListener('load', () => {
   }, { threshold: 0.1 });
 
   document.querySelectorAll('.container-link').forEach(el => observer.observe(el));
+  document.getElementById('loading-screen').classList.add('imp-hidden');
+  document.querySelector('.main').classList.remove('imp-hidden');
+
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -347,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
       correctLevel: QRCode.CorrectLevel.H
     });
 
-    // Tunggu hingga QR selesai dirender lalu enable download
+
     setTimeout(() => {
       const qrCanvas = qrTarget.querySelector('canvas');
       const qrImage = qrTarget.querySelector('img');
@@ -375,7 +393,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 300);
   });
 
-  // Tutup popup QR
+
   const closeQR = () => {
     qrPopup.style.animation = 'fadeOutDown 0.5s ease forwards';
     setTimeout(() => {
